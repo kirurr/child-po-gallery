@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { useGallery } from './composables/useGallery';
 
-const { getFiles } = useGallery();
+const { files, getFiles } = useGallery();
 
 getFiles();
 </script>
 
 <template>
-	<div>hiii</div>
+	<h1>Hello World</h1>
+	<template v-for="file in files">
+		<img :src="file" alt="Child Po" />
+	</template>
 </template>

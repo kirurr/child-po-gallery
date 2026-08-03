@@ -1,17 +1,12 @@
-import { Octokit } from "octokit";
+import { ref } from "vue";
 
 export const useGallery = () => {
-	const octokit = new Octokit();
-	const files: [] = [];
+	const files = ref<string[]>([]);
 
 	async function getFiles() {
-		const { data } = await octokit.rest.repos.getContent({
-			owner: "kirurr",
-			repo: "child-po-gallery",
-			path: "public",
-		})
-
-		console.log(data)
+		const res = await fetch('/gallery.json');
+		const data = await res.json() as string[];
+		files.value.push(...data);
 	}
 
 	return {

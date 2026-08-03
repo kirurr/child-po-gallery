@@ -3,10 +3,10 @@ import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
-export default defineConfig({
-  plugins: [
+export default defineConfig(({ mode }) => ({
+	plugins: [
 		vue(),
 		tailwindcss(),
 	],
-	base: '/child-po-gallery'
-})
+	base: mode === 'production' ? '/child-po-gallery' : "/"
+}))
