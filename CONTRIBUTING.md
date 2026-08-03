@@ -16,7 +16,7 @@ Format doesn't matter — jpg, png, webp, avif, a gif of child po. Anything `sha
 
 ## How
 
-1. Put your image in `public/`.
+1. Put your image in `public/images/` (the rest of `public/` is favicons, not art).
 2. Run `pnpm generateGallery` and `pnpm dev` to check it shows up.
 3. Do **not** commit `public/gallery.json` — it's gitignored and CI regenerates it.
 4. Open the PR.

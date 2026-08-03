@@ -3,13 +3,12 @@ import type { GalleryImage } from "./lib/types";
 import sharp from "sharp";
 import { join } from "path";
 
-const folderPath = "./public/";
+const folderPath = "./public/images/";
 
 const files = readdirSync(folderPath);
 
 const filesMetadata: GalleryImage[] = []
 for (const file of files) {
-	if (file.endsWith(".json")) continue;
 	filesMetadata.push(await getImageData(file));
 }
 
@@ -24,7 +23,7 @@ async function getImageData(path: string): Promise<GalleryImage> {
 	const metadata = await sharp(filepath).metadata();
 
 	return {
-		path,
+		path: `images/${path}`,
 		height: metadata.height,
 		width: metadata.width,
 		aspectRatio: Math.round((metadata.width / metadata.height) * 10) / 10,

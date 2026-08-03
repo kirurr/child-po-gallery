@@ -10,7 +10,7 @@ Look at them all: **https://kirurr.github.io/child-po-gallery/**
 
 ```sh
 pnpm install
-pnpm generateGallery   # measures every image in public/ (any format) -> public/gallery.json
+pnpm generateGallery   # measures every image in public/images/ (any format) -> public/gallery.json
 pnpm dev
 ```
 
