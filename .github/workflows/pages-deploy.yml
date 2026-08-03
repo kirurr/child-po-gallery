@@ -37,6 +37,9 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Generate gallery
+        run: node generateGallery.js
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
