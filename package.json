@@ -7,10 +7,13 @@
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview",
-		"generateGallery": "tsx src/generateGallery.ts"
+    "generateGallery": "tsx src/generateGallery.ts"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "@types/justified-layout": "^4.1.4",
+    "@vueuse/core": "^14.4.0",
+    "justified-layout": "^4.1.0",
     "tailwindcss": "^4.3.3",
     "vue": "^3.5.40"
   },

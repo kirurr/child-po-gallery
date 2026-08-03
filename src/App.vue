@@ -1,15 +1,16 @@
 <script setup lang="ts">
+import { useWindowSize } from '@vueuse/core';
+import JustifiedGallery from './components/JustifiedGallery.vue';
 import { useGallery } from './composables/useGallery';
-import { createUrl } from './lib/createUrl';
-
 const { files, getFiles } = useGallery();
 
 getFiles();
+const { width } = useWindowSize();
 </script>
 
 <template>
 	<h1>Hello World</h1>
-	<template v-for="file in files">
-		<img :src="createUrl(file.path)" alt="Child Po" />
-	</template>
+	<div class="flex flex-col items-center justify-center">
+		<JustifiedGallery v-if="files.length" :items="files" :width="width" />
+	</div>
 </template>
