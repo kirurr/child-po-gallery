@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useGallery } from './composables/useGallery';
 
-const { files, getFiles } = useGallery();
+const { getFiles } = useGallery();
 
 getFiles();
 </script>
