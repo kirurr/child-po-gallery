@@ -17,6 +17,7 @@ const geometry = computed(() => {
 
 	});
 });
+const height = computed(() => `${Math.round(geometry.value.containerHeight)}px`);
 
 const images = computed(() => {
 	return props.items.map((item, index) => ({
@@ -27,7 +28,9 @@ const images = computed(() => {
 </script>
 
 <template>
-	<div class="relative w-full h-full">
+	<div class="relative w-full" :style="{
+		height: height
+	}">
 		<img v-for="(image, index) in images" :key="index" :src="image.url" :style="{
 			position: 'absolute',
 			width: `${image.width}px`,

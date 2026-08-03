@@ -10,7 +10,7 @@ const { width } = useWindowSize();
 
 <template>
 	<h1>Hello World</h1>
-	<div class="flex flex-col items-center justify-center">
-		<JustifiedGallery v-if="files.length" :items="files" :width="width" />
-	</div>
+	<JustifiedGallery v-if="files.length" :items="files" :width="width" />
+	<p class="text-center">contribute <a class="text-blue-500 hover:underline" target="_blank"
+			href="https://github.com/kirurr/child-po-gallery">https://github.com/kirurr/child-po-gallery</a></p>
 </template>
