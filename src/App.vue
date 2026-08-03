@@ -10,6 +10,6 @@ getFiles();
 <template>
 	<h1>Hello World</h1>
 	<template v-for="file in files">
-		<img :src="createUrl(file)" alt="Child Po" />
+		<img :src="createUrl(file.path)" alt="Child Po" />
 	</template>
 </template>

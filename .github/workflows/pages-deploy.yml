@@ -31,11 +31,11 @@ jobs:
           node-version: 22
           cache: pnpm
 
-      - name: Generate gallery
-        run: node generateGallery.js
-
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Generate gallery
+        run: pnpm generateGallery
 
       - name: Build
         run: pnpm build
