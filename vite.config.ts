@@ -8,5 +8,5 @@ export default defineConfig(({ mode }) => ({
 		vue(),
 		tailwindcss(),
 	],
-	base: mode === 'production' ? '/child-po-gallery' : "/"
+	base: mode === 'production' ? '/child-po-gallery/' : "/"
 }))

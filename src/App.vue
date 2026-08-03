@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useGallery } from './composables/useGallery';
+import { createUrl } from './lib/createUrl';
 
 const { files, getFiles } = useGallery();
 
@@ -9,6 +10,6 @@ getFiles();
 <template>
 	<h1>Hello World</h1>
 	<template v-for="file in files">
-		<img :src="file" alt="Child Po" />
+		<img :src="createUrl(file)" alt="Child Po" />
 	</template>
 </template>
