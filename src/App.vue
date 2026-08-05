@@ -2,6 +2,7 @@
 import { useWindowSize } from '@vueuse/core';
 import JustifiedGallery from './components/JustifiedGallery.vue';
 import { useGallery } from './composables/useGallery';
+import FullscreenModal from './components/FullscreenModal.vue';
 const { files, getFiles } = useGallery();
 
 getFiles();
@@ -13,4 +14,5 @@ const { width } = useWindowSize();
 	<JustifiedGallery v-if="files.length" :items="files" :width="width" />
 	<p class="text-center">contribute <a class="text-blue-500 hover:underline" target="_blank"
 			href="https://github.com/kirurr/child-po-gallery">https://github.com/kirurr/child-po-gallery</a></p>
+	<FullscreenModal />
 </template>

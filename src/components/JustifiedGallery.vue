@@ -3,11 +3,14 @@ import { computed } from 'vue';
 import { createUrl } from '../lib/createUrl';
 import type { GalleryImage } from '../lib/types';
 import layout from 'justified-layout';
+import { useFullscreenModal } from '../composables/useFullscreenModal';
 
 const props = defineProps<{
 	items: GalleryImage[];
 	width: number;
 }>();
+
+const { openModal } = useFullscreenModal();
 
 const geometry = computed(() => {
 	const aspectRatios = props.items.map((item) => item.aspectRatio);
@@ -31,7 +34,7 @@ const images = computed(() => {
 	<div class="relative w-full" :style="{
 		height: height
 	}">
-		<img v-for="(image, index) in images" :key="index" :src="image.url" :style="{
+		<img @click.prevent="openModal(image.url)" v-for="(image, index) in images" :key="index" :src="image.url" :style="{
 			position: 'absolute',
 			width: `${image.width}px`,
 			height: `${image.height}px`,
