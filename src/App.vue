@@ -10,9 +10,17 @@ const { width } = useWindowSize();
 </script>
 
 <template>
-	<h1>Hello World</h1>
-	<JustifiedGallery v-if="files.length" :items="files" :width="width" />
-	<p class="text-center">contribute <a class="text-blue-500 hover:underline" target="_blank"
-			href="https://github.com/kirurr/child-po-gallery">https://github.com/kirurr/child-po-gallery</a></p>
-	<FullscreenModal />
+	<main>
+		<div class="my-8">
+			<h1 class="text-center text-[clamp(2.5rem,12vw,6rem)]/[1.1] mb-2 font-bold tracking-wide flex items-center justify-center gap-1"><span
+					class="pb-2">Child</span><span class="bg-accent px-1 pb-2 rounded-md text-bg">Po</span><span
+					class="text-text-muted pb-2">Gallery</span></h1>
+			<p class="text-center text-xl">Wanna add your chlid po images? <a class="text-accent hover:underline" target="_blank"
+					href="https://github.com/kirurr/child-po-gallery/issues/new">Click here</a></p>
+		</div>
+
+		<JustifiedGallery v-if="files.length" :items="files" :width="width" />
+
+		<FullscreenModal />
+	</main>
 </template>

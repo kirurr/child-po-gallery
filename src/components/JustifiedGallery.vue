@@ -34,12 +34,16 @@ const images = computed(() => {
 	<div class="relative w-full" :style="{
 		height: height
 	}">
-		<img @click.prevent="openModal(image.url)" v-for="(image, index) in images" :key="index" :src="image.url" :style="{
-			position: 'absolute',
-			width: `${image.width}px`,
-			height: `${image.height}px`,
-			top: `${image.top}px`,
-			left: `${image.left}px`
-		}" />
+		<img @click.prevent="openModal(image.url)"
+			v-for="(image, index) in images"
+			:key="index"
+			class="rounded-md"
+			:src="image.url" :style="{
+				position: 'absolute',
+				width: `${image.width}px`,
+				height: `${image.height}px`,
+				top: `${image.top}px`,
+				left: `${image.left}px`
+			}" />
 	</div>
 </template>

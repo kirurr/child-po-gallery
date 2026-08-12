@@ -1,1 +1,32 @@
 @import "tailwindcss";
+
+@theme {
+	--color-accent: oklch(0.757821 0.177031 60.398113);
+
+	--color-bg: oklch(0.1579 0 0);
+
+	--color-text: oklch(1 0 0);
+	--color-text-muted: oklch(0.65 0 0);
+}
+
+body {
+	@apply bg-bg text-text;
+}
+
+/*
+ * Blurred accent blobs. One fixed layer covering the viewport, so they stay put
+ * while scrolling. Every blob is one background layer: `circle <radius> at <x> <y>`.
+ * To add a blob, add a line; to move one, change its percentages.
+ */
+body::before {
+	content: "";
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	opacity: 0.5;
+	background:
+		radial-gradient(circle 20rem at 0% -10%, var(--color-accent), transparent 70%),
+		radial-gradient(circle 30rem at 90% 40%, var(--color-accent), transparent 70%),
+		radial-gradient(circle 35rem at 10% 110%, var(--color-accent), transparent 70%);
+}
