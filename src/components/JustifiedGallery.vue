@@ -4,13 +4,14 @@ import { createUrl } from '../lib/createUrl';
 import type { GalleryImage } from '../lib/types';
 import layout from 'justified-layout';
 import { useFullscreenModal } from '../composables/useFullscreenModal';
+import { IMAGE_TRANSITION_NAME } from '../lib/viewTransition';
 
 const props = defineProps<{
 	items: GalleryImage[];
 	width: number;
 }>();
 
-const { openModal } = useFullscreenModal();
+const { openModal, visible, morphingUrl } = useFullscreenModal();
 
 const geometry = computed(() => {
 	const aspectRatios = props.items.map((item) => item.aspectRatio);
@@ -34,16 +35,21 @@ const images = computed(() => {
 	<div class="relative w-full" :style="{
 		height: height
 	}">
-		<img @click.prevent="openModal(image.url)"
+		<button @click="openModal(image.url)"
 			v-for="(image, index) in images"
 			:key="index"
-			class="rounded-md"
-			:src="image.url" :style="{
-				position: 'absolute',
+			type="button"
+			class="focus-ring absolute cursor-pointer"
+			:style="{
 				width: `${image.width}px`,
 				height: `${image.height}px`,
 				top: `${image.top}px`,
 				left: `${image.left}px`
-			}" />
+			}">
+			<img class="h-full w-full rounded-md object-cover" :src="image.url" :alt="`Gallery image ${index + 1}`"
+				:style="{
+					viewTransitionName: !visible && morphingUrl === image.url ? IMAGE_TRANSITION_NAME : undefined
+				}" />
+		</button>
 	</div>
 </template>

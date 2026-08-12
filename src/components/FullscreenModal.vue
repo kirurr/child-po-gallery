@@ -2,6 +2,7 @@
 import { useTemplateRef, watch } from 'vue';
 import { useScrollLock } from '@vueuse/core';
 import { useFullscreenModal } from '../composables/useFullscreenModal';
+import { IMAGE_TRANSITION_NAME } from '../lib/viewTransition';
 
 const { visible, url, closeModal } = useFullscreenModal();
 const dialog = useTemplateRef<HTMLDialogElement>('dialog');
@@ -23,8 +24,16 @@ function onClick(event: MouseEvent) {
 </script>
 
 <template>
-	<dialog ref="dialog" @close="closeModal" @click="onClick"
-		class="m-auto max-h-[90dvh] max-w-[90vw] bg-transparent p-0 backdrop:bg-black/80">
-		<img v-if="url" :src="url" alt="gallery" class="max-h-[90dvh] max-w-[90vw] object-contain" />
+	<dialog ref="dialog" @close="closeModal" @cancel.prevent="closeModal" @click="onClick"
+		class="m-auto max-h-[100dvh] max-w-[100vw] bg-transparent p-0 focus:outline-none backdrop:bg-black/80">
+		<button @click="closeModal" type="button" aria-label="Close" autofocus
+			class="focus-ring fixed top-4 right-4 cursor-pointer text-text-muted transition-colors hover:text-text">
+			<svg class="size-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+				stroke-linecap="round">
+				<path d="M6 6 18 18M18 6 6 18" />
+			</svg>
+		</button>
+		<img v-if="url" :src="url" alt="gallery" class="md:min-h-[50vh] max-h-[96dvh] max-w-[96vw] rounded-md object-contain"
+			:style="{ viewTransitionName: IMAGE_TRANSITION_NAME }" />
 	</dialog>
 </template>

@@ -13,6 +13,27 @@ body {
 	@apply bg-bg text-text;
 }
 
+/* Thumbnail morphing into the fullscreen image. Name comes from lib/viewTransition.ts. */
+::view-transition-group(fullscreen-image) {
+	animation-duration: 300ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	::view-transition-group(*) {
+		animation: none;
+	}
+}
+
+/* Accent focus ring for any interactive element. Keyboard-only by design. */
+@utility focus-ring {
+	border-radius: var(--radius-md);
+
+	&:focus-visible {
+		outline: 3px solid var(--color-accent);
+		outline-offset: 5px;
+	}
+}
+
 /*
  * Blurred accent blobs. One fixed layer covering the viewport, so they stay put
  * while scrolling. Every blob is one background layer: `circle <radius> at <x> <y>`.

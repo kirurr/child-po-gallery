@@ -15,7 +15,7 @@ const { width } = useWindowSize();
 			<h1 class="text-center text-[clamp(2.5rem,12vw,6rem)]/[1.1] mb-2 font-bold tracking-wide flex items-center justify-center gap-1"><span
 					class="pb-2">Child</span><span class="bg-accent px-1 pb-2 rounded-md text-bg">Po</span><span
 					class="text-text-muted pb-2">Gallery</span></h1>
-			<p class="text-center text-xl">Wanna add your chlid po images? <a class="text-accent hover:underline" target="_blank"
+			<p class="text-center text-xl">Wanna add your chlid po images? <a class="focus-ring text-accent hover:underline" target="_blank"
 					href="https://github.com/kirurr/child-po-gallery/issues/new">Click here</a></p>
 		</div>
 
