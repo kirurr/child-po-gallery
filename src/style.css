@@ -18,7 +18,6 @@ body {
 	@apply bg-bg text-text;
 }
 
-/* Thumbnail morphing into the fullscreen image. Name comes from lib/viewTransition.ts. */
 ::view-transition-group(fullscreen-image) {
 	animation-duration: 300ms;
 }
@@ -29,7 +28,6 @@ body {
 	}
 }
 
-/* Accent focus ring for any interactive element. Keyboard-only by design. */
 @utility focus-ring {
 	border-radius: var(--radius-md);
 
@@ -39,11 +37,6 @@ body {
 	}
 }
 
-/*
- * Blurred accent blobs. One fixed layer covering the viewport, so they stay put
- * while scrolling. Every blob is one background layer: `circle <radius> at <x> <y>`.
- * To add a blob, add a line; to move one, change its percentages.
- */
 body::before {
 	content: "";
 	position: fixed;
@@ -52,7 +45,23 @@ body::before {
 	pointer-events: none;
 	opacity: 0.5;
 	background:
-		radial-gradient(circle 20rem at 0% -10%, var(--color-accent), transparent 70%),
-		radial-gradient(circle 30rem at 90% 40%, var(--color-accent), transparent 70%),
-		radial-gradient(circle 35rem at 10% 110%, var(--color-accent), transparent 70%);
+		radial-gradient(circle 20rem at 0% -20%, var(--color-accent), transparent 70%),
+		radial-gradient(circle 10rem at 120% 40%, var(--color-accent), transparent 70%),
+		radial-gradient(circle 30rem at 10% 120%, var(--color-accent), transparent 70%);
 }
+
+@media (width >= 768px) {
+	body::before {
+		content: "";
+		position: fixed;
+		inset: 0;
+		z-index: -1;
+		pointer-events: none;
+		opacity: 0.5;
+		background:
+			radial-gradient(circle 20rem at 0% -10%, var(--color-accent), transparent 70%),
+			radial-gradient(circle 30rem at 90% 40%, var(--color-accent), transparent 70%),
+			radial-gradient(circle 35rem at 10% 110%, var(--color-accent), transparent 70%);
+	}
+}
+
